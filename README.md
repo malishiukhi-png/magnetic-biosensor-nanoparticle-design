@@ -22,3 +22,4 @@ Revised analysis (submitted version; the practical CoFe2O4 design is now a 16 nm
 - `noise_lod.py`   Limit of detection with a noise that depends on signal amplitude and particle concentration, CoFe2O4 window for K = 40-250 kJ/m3 (cubic barrier K1 V/4) -> noise_lod.json
 - `compare_exp.py` Brownian peak and binding shift compared with published AC-susceptibility data -> compare_exp.json
 - `fig_lod.py`     Figure 6 from noise_lod.json. Run after noise_lod.py; `binding.py` imports constants from noise_lod.py.
+- `mps_fpe.py`     Harmonic read-out: Brownian Fokker-Planck equation in Legendre form, test against the measured harmonic ratio of Zhong et al. (2021), comparison of the designs -> mps_fpe.json (Sections 2.8 and 3.9)
