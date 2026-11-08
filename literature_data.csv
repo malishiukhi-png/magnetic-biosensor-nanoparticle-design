@@ -1,0 +1,8 @@
+source,quantity,value,unit,note
+Enpuku 2009,free-marker chi2 peak,380,Hz,DLS size 120 nm
+Chung 2004,peak before binding,210,Hz,value as reported in the secondary source; check against the article
+Chung 2004,peak after binding,120,Hz,value as reported in the secondary source; check against the article
+Zhong 2021 ACS Sens.,tau_B without target,0.742,ms,"BNF-80, functionalized"
+Zhong 2021 ACS Sens.,tau_B with mimic virus,1.292,ms,
+Zhong 2021 JMMM,"tau_B at 6.67 nM particles, 5 nM IgG",0.85,ms,
+Zhong 2021 JMMM,"tau_B at 0.67 nM particles, 5 nM IgG",1.2,ms,

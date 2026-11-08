@@ -1,0 +1,42 @@
+{
+ "enpuku": {
+  "dls_nm": 120,
+  "f_meas": 380,
+  "f_model": 271.0,
+  "d_from_peak_nm": 107.2
+ },
+ "chung": {
+  "f0": 210,
+  "f1": 120,
+  "shift_meas": 42.9,
+  "d0_nm": 130.7,
+  "d1_nm": 157.5,
+  "layer_inferred_nm": 13.4,
+  "shift_model_10nm": 34.8
+ },
+ "zhong_acs": {
+  "tau0_ms": 0.742,
+  "tau1_ms": 1.292,
+  "ratio": 1.74,
+  "shift_meas": 42.6,
+  "d0_nm": 129.8,
+  "d1_nm": 156.1,
+  "layer_inferred_nm": 13.2,
+  "k_equiv": 1.39
+ },
+ "zhong_jmmm": {
+  "tau_high_c_ms": 0.85,
+  "tau_low_c_ms": 1.2,
+  "ratio": 1.41,
+  "d_high_c_nm": 135.8,
+  "d_low_c_nm": 152.3,
+  "target_per_particle": [
+   0.75,
+   7.5
+  ]
+ },
+ "model": {
+  "shift_5nm_on_130nm": 19.9,
+  "shift_5nm_on_40nm": 48.8
+ }
+}
