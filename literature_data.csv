@@ -1,8 +1,14 @@
 source,quantity,value,unit,note
 Enpuku 2009,free-marker chi2 peak,380,Hz,DLS size 120 nm
-Chung 2004,peak before binding,210,Hz,value as reported in the secondary source; check against the article
-Chung 2004,peak after binding,120,Hz,value as reported in the secondary source; check against the article
+Chung 2004,peak before binding,210,Hz,300 K; article text
+Chung 2004,peak after binding,120,Hz,biotinylated S protein 6.3 uM; article text
+Chung 2004,diameter assumed before binding,50,nm,from TEM of dried samples; article text
+Chung 2004,diameter inferred after binding,60,nm,from the peak ratio and the assumed 50 nm; article text
 Zhong 2021 ACS Sens.,tau_B without target,0.742,ms,"BNF-80, functionalized"
 Zhong 2021 ACS Sens.,tau_B with mimic virus,1.292,ms,
-Zhong 2021 JMMM,"tau_B at 6.67 nM particles, 5 nM IgG",0.85,ms,
-Zhong 2021 JMMM,"tau_B at 0.67 nM particles, 5 nM IgG",1.2,ms,
+Zhong 2021 JMMM,"tau_B at 6.67 nM particles, 5 nM IgG",0.85,ms,abstract
+Zhong 2021 JMMM,"tau_B at 0.67 nM particles, 5 nM IgG",1.2,ms,abstract
+Zhong 2021 JMMM,"tau_B at 6.67 nM particles, no IgG",0.82,ms,Section 3.2
+Zhong 2021 JMMM,"tau_B at 6.67 nM particles, 8.33 nM IgG",0.87,ms,Section 3.2 and Fig. 4
+Zhong 2021 JMMM,"tau_B at 1.00 nM particles, no IgG",0.86,ms,Section 3.2
+Zhong 2021 JMMM,"tau_B at 1.00 nM particles, 8.33 nM IgG",1.31,ms,Section 3.2 and Fig. 4
