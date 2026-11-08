@@ -4,6 +4,9 @@ Chung 2004,peak before binding,210,Hz,300 K; article text
 Chung 2004,peak after binding,120,Hz,biotinylated S protein 6.3 uM; article text
 Chung 2004,diameter assumed before binding,50,nm,from TEM of dried samples; article text
 Chung 2004,diameter inferred after binding,60,nm,from the peak ratio and the assumed 50 nm; article text
+Astalan 2004,peak before PSA binding,255,Hz,"antibody-coated multicore particles, mean diameter 130 nm, 295 K; article text"
+Astalan 2004,peak after PSA binding,195,Hz,article text
+Astalan 2004,reported sensitivity,0.3,pmol,sample volume 25 uL; article text
 Zhong 2021 ACS Sens.,tau_B without target,0.742,ms,"BNF-80, functionalized"
 Zhong 2021 ACS Sens.,tau_B with mimic virus,1.292,ms,
 Zhong 2021 JMMM,"tau_B at 6.67 nM particles, 5 nM IgG",0.85,ms,abstract

@@ -27,6 +27,12 @@ d0 = d_of_f(210); d1 = d_of_f(120)
 R['chung'] = dict(f0=210, f1=120, shift_meas=round(100 * (1 - 120 / 210), 1), d0_nm=round(float(d0 * 1e9), 1), d1_nm=round(float(d1 * 1e9), 1),
                   layer_inferred_nm=round(float((d1 - d0) / 2 * 1e9), 1), d_tem_nm=50, d_tem_after_nm=60, shift_tem=round(100 * (1 - (50 / 60)**3), 1),
                   shift_model_5nm=round(float(100 * (1 - (d0 / (d0 + 10e-9))**3)), 1))
+# Astalan et al. (2004): dextran-coated multicore particles, mean diameter 130 nm; chi'' peak 255 -> about 195 Hz when PSA binds (295 K);
+# sensitivity 0.3 pmol in 25 uL
+d0 = d_of_f(255); d1 = d_of_f(195)
+R['astalan'] = dict(f0=255, f1=195, shift_meas=round(100 * (1 - 195 / 255), 1), d_tem_nm=130, d0_nm=round(float(d0 * 1e9), 1), d1_nm=round(float(d1 * 1e9), 1),
+                    layer_inferred_nm=round(float((d1 - d0) / 2 * 1e9), 1), shift_model_5nm=round(float(100 * (1 - (d0 / (d0 + 10e-9))**3)), 1),
+                    lod_nM=round(0.3e-12 / 25e-6 * 1e9, 0))
 # Zhong et al. (2021, ACS Sens.): tau_B 0.742 -> 1.292 ms for functionalized BNF-80 with increasing mimic-virus concentration
 d0 = d_of_tau(0.742e-3); d1 = d_of_tau(1.292e-3)
 R['zhong_acs'] = dict(tau0_ms=0.742, tau1_ms=1.292, ratio=round(1.292 / 0.742, 2), shift_meas=round(100 * (1 - 0.742 / 1.292), 1),
