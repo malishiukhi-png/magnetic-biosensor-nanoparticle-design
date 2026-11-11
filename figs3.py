@@ -66,7 +66,7 @@ for mat in ('Fe3O4', 'CoFe2O4'):
     sp = R['spectra'][mat]; f = np.array(sp['f']); a = np.array(sp['free']); b = np.array(sp['bound']); n = a.max()
     ax.semilogx(f, a / n, color=C[mat], label='%s, %.1f nm' % (LAB[mat], sp['d0'])); ax.semilogx(f, b / n, color=C[mat], ls='--')
 ax.plot([], [], color=MUTED, label='Free'); ax.plot([], [], color=MUTED, ls='--', label='Fully bound')
-ax.set_xlim(1e2, 1e6); ax.set_ylim(0, 1.1); ax.set_xlabel('Frequency (Hz)'); ax.set_ylabel("Normalized χ''"); ax.legend(loc='upper right', fontsize=7.5); tag(ax, '(a)')
+ax.set_xlim(1e2, 1e6); ax.set_ylim(0, 1.5); ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0]); ax.set_xlabel('Frequency (Hz)'); ax.set_ylabel("Normalized χ''"); ax.legend(loc='upper right', ncol=2, fontsize=7, columnspacing=0.8, handlelength=1.6); tag(ax, '(a)')
 ax = axs[1]
 for mat in ('Fe3O4', 'CoFe2O4'):
     rows = [r for r in S[mat] if r['shift'] is not None]
@@ -80,7 +80,6 @@ fig, axs = plt.subplots(1, 2, figsize=(16 * CM, 6.6 * CM))
 ax = axs[0]
 for mat in ('Fe3O4', 'CoFe2O4'):
     ax.plot([r['sigma'] for r in WF[mat]], [r['frac'] for r in WF[mat]], 'o-', color=C[mat], ms=4, label=LAB[mat])
-ax.plot([r['sigma'] for r in WF['CoFe2O4_K45']], [r['frac'] for r in WF['CoFe2O4_K45']], 's--', color=C['CoFe2O4'], ms=4, mfc='white', mew=1.1, label='CoFe$_2$O$_4$, $K$ = 45')
 ax.set_xlim(0.03, 0.32); ax.set_ylim(0, 105); ax.set_xlabel('Size dispersion σ'); ax.set_ylabel('Mass in usable window (%)'); ax.legend(loc='center right'); tag(ax, '(a)', 0.03, 0.6)
 ax = axs[1]
 th = np.array(R['shift_vs_cover']['theta']); sh = np.array(R['shift_vs_cover']['shift'])

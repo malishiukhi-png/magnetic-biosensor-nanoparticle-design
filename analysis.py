@@ -48,12 +48,11 @@ for mat, dc in design.items():
 R['poly'] = poly
 # example spectra for figure
 fr = np.logspace(1, 7, 600)
-SPD = {'Fe3O4': design['Fe3O4'], 'CoFe2O4': 16.0}
+SPD = {'Fe3O4': design['Fe3O4'], 'CoFe2O4': 12.0}
 R['spectra'] = {mat: dict(d0=SPD[mat], f=fr.tolist(), free=spectrum(fr, SPD[mat] * 1e-9, DELTA, mat, sigma=0.1).tolist(),
                           bound=spectrum(fr, SPD[mat] * 1e-9, DELTA, mat, sigma=0.1, cover=1.0, layer=LAYER).tolist()) for mat in MAT}
-# practical CoFe2O4 design for a polydisperse sample (sigma 0.1): median 16 nm keeps > 96 % of the sample in the window
-# for every effective anisotropy from 40 to 250 kJ/m3 (see noise_lod.py)
-DP = 16.0
+# practical CoFe2O4 design for a polydisperse sample (sigma 0.1): median 12 nm keeps the whole sample in the window
+DP = 12.0
 dc = DP * 1e-9
 f25, _ = peak(dc, DELTA, 'CoFe2O4', sigma=0.1, T=298.15); f26, _ = peak(dc, DELTA, 'CoFe2O4', sigma=0.1, T=299.15)
 R['temp_per_K'] = round(100 * (f26 / f25 - 1), 2)
@@ -79,7 +78,7 @@ for noise in (0.25, 0.5, 1.0, 2.0):
 R['lod'] = lod
 # effect of the anisotropy uncertainty of CoFe2O4 on the Brownian window
 R['K_sens'] = {}
-for K in (40e3, 45e3, 50e3, 100e3, 180e3, 250e3):
+for K in (50e3, 100e3, 180e3, 250e3):
     dd = np.linspace(5e-9, 20e-9, 1501); tN, tB, _ = taus(dd, dd + 2 * DELTA, 'CoFe2O4', T0, K=K)
     R['K_sens'][str(int(K / 1e3))] = round(float(dd[np.argmax(tN / (tN + tB) > 0.9)] * 1e9), 2)
 f0p, a0p = peak(dc, DELTA, 'CoFe2O4', sigma=0.1); f1p, _ = peak(dc, DELTA, 'CoFe2O4', sigma=0.1, cover=1.0, layer=LAYER)

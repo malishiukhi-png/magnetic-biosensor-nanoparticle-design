@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-T0 = 298.15; DELTA = 12e-9; LAYER = 5e-9; MAT_ = 'CoFe2O4'; D0 = 16e-9; SIG = 0.1
+T0 = 298.15; DELTA = 12e-9; LAYER = 5e-9; MAT_ = 'CoFe2O4'; D0 = 12e-9; SIG = 0.1
 KD = 1e-9                     # dissociation constant (M)
 NS = 20                       # functional binding sites per particle (assumed; 5-50 tested)
 DF = 1.8                      # fractal dimension used for the hydrodynamic size of k-particle clusters
@@ -176,12 +176,6 @@ print(json.dumps(R, indent=1))
 
 
 # ---- Figure 5 -------------------------------------------------------------------------------------
-# Markers: LOD for the concentration-dependent noise of Section 2.7 (n_chi = 1e-6); grey line: 3 x the noise floor eps0.
-from noise_lod import KAPPA, M as M_PTS, EPS0
-NCHI_FIG = 1e-6
-AMAX = float(spectrum_k(FG, 0.0, free).max())
-def eps_peak(cm): return 100 * np.sqrt(EPS0**2 + (KAPPA * NCHI_FIG / (AMAX * cm * 1e-3))**2)
-def eps_flank(cm): return 100 * np.sqrt(EPS0**2 + (NCHI_FIG / (np.sqrt(M_PTS) * X0 * cm * 1e-3))**2)
 plt.rcParams.update({'font.family': 'Liberation Sans', 'font.size': 10, 'axes.labelweight': 'bold',
                      'axes.linewidth': 0.8, 'xtick.direction': 'in', 'ytick.direction': 'in',
                      'xtick.top': True, 'ytick.right': True, 'xtick.minor.visible': True, 'ytick.minor.visible': True,
@@ -189,29 +183,19 @@ plt.rcParams.update({'font.family': 'Liberation Sans', 'font.size': 10, 'axes.la
 C = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4']; INK = '#0b0b0b'; MUTED = '#898781'; CMM = 1 / 2.54
 fig, axs = plt.subplots(1, 2, figsize=(16 * CMM, 6.4 * CMM))
 Lx = Lgrid * 1e9
-FLOOR = 3 * 100 * EPS0
-def mark(ax, x, y, thr, col):
-    i = np.argmax(y >= thr)
-    if y.max() >= thr and i > 0:
-        xm = np.exp(np.interp(thr, [y[i - 1], y[i]], np.log([x[i - 1], x[i]])))
-        ax.plot([xm], [thr], 'o', ms=4.5, color=col, mfc='white', mew=1.3, zorder=5)
 ax = axs[0]
 ax.semilogx(Lx, curves['excess']['fp'], color=INK, ls=':', label='Target excess')
 for k, cm in enumerate((1, 10, 100)):
-    y = np.array(curves['dep_%d' % cm]['fp'])
-    ax.semilogx(Lx, y, color=C[k], ls=['-', '--', '-.'][k], label='%d µg mL$^{-1}$' % cm)
-    mark(ax, Lx, y, 3 * eps_peak(cm), C[k])
-ax.axhline(FLOOR, color=MUTED, lw=1)
+    ax.semilogx(Lx, curves['dep_%d' % cm]['fp'], color=C[k], ls=['-', '--', '-.'][k], label='%d µg mL$^{-1}$' % cm)
+ax.axhline(1.5, color=MUTED, lw=1); ax.text(1.3e-4, 2.4, '3 × 0.5% noise', fontsize=7, color='#52514e', ha='left')
 ax.set_xlim(1e-4, 1e4); ax.set_ylim(0, 55)
 ax.set_xlabel('Target concentration (nM)'); ax.set_ylabel('Peak shift (%)')
 ax.legend(loc='upper left', bbox_to_anchor=(0.0, 0.88)); ax.text(0.03, 0.95, '(a)', transform=ax.transAxes, fontweight='bold', va='top')
 ax = axs[1]
 ax.semilogx(Lx, curves['dep_10']['chi'], color=INK, ls=':', label='No bridging')
 for k, a in enumerate((1e-4, 1e-3, 1e-2)):
-    y = np.array(curves['brid_%g' % a]['chi'])
-    ax.semilogx(Lx, y, color=C[k], ls=['-', '--', '-.'][k], label='α = 10$^{%d}$' % round(np.log10(a)))
-    mark(ax, Lx, y, 3 * eps_flank(10), C[k])
-ax.axhline(FLOOR, color=MUTED, lw=1)
+    ax.semilogx(Lx, curves['brid_%g' % a]['chi'], color=C[k], ls=['-', '--', '-.'][k], label='α = 10$^{%d}$' % round(np.log10(a)))
+ax.axhline(1.5, color=MUTED, lw=1)
 ax.set_xlim(1e-4, 1e4); ax.set_ylim(0, 105)
 ax.set_xlabel('Target concentration (nM)'); ax.set_ylabel('Decrease of χ″ at 3$f_0$ (%)')
 ax.legend(loc='upper left', bbox_to_anchor=(0.0, 0.88)); ax.text(0.03, 0.95, '(b)', transform=ax.transAxes, fontweight='bold', va='top')

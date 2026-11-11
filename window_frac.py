@@ -2,7 +2,6 @@
 import json, numpy as np
 R = json.load(open('results.json'))
 W = {m: R['window'][m]['window'] for m in R['window']}
-W['CoFe2O4_K45'] = [12.8, 20.4]     # cubic barrier K1 V/4 with K1 = 180 kJ/m3 (noise_lod.py)
 out = {}
 for mat, (lo, hi) in W.items():
     rows = []
